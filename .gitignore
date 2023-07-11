@@ -1,0 +1,26 @@
+# Python
+*.pyc
+*.pyo
+__pycache__/
+*.pyc
+*.swp
+
+# Django
+*.log
+db.sqlite3
+media/
+
+# Virtual environment
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+
+# Dependency management
+pip-wheel-metadata/
+pip-compile.*
+
+# Other
+.DS_Store
