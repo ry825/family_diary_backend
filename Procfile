@@ -1,0 +1,1 @@
+web: gunicorn family_sns_api.wsgi --log-file -
