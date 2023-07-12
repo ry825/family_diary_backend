@@ -11,6 +11,7 @@ db.sqlite3
 media/
 
 # Virtual environment
+venv/
 env/
 
 # IDE
@@ -23,4 +24,3 @@ pip-compile.*
 
 # Other
 .DS_Store
-.env

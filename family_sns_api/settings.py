@@ -12,12 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 from datetime import timedelta
-from whitenoise import WhiteNoise
-from dotenv import load_dotenv
-import dj_database_url
 import os
-
-load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,13 +22,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = "django-insecure-q8idepe$=n$oqowxmyll*##_6p$4vad&wi-vdv^-rsr&gi3rr3"
 
 # SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = True
 
-# 各環境の環境変数を設定してください
-DEBUG = os.getenv('DEBUG')
-ALLOWED_HOSTS = [os.getenv('AH')]
-SECRET_KEY = os.environ['SK']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -53,7 +47,6 @@ INSTALLED_APPS = [
     'api_user.apps.ApiUserConfig',
     'corsheaders',
     'djoser',
-    "whitenoise.runserver_nostatic",
 ]
 
 MIDDLEWARE = [
@@ -65,7 +58,6 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 CORS_ORIGIN_WHITELIST = [
@@ -109,17 +101,13 @@ SIMPLE_JWT = {
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-if os.getenv('ENV') == 'DEV':
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.sqlite3",
-            "NAME": BASE_DIR / "db.sqlite3",
-        }
+
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
     }
-else:
-    DATABASES = {
-        'default': dj_database_url.config()
-    }
+}
 
 
 # Password validation
@@ -151,7 +139,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = "static/"
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
