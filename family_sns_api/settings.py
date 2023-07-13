@@ -68,7 +68,7 @@ MIDDLEWARE = [
 ]
 
 CORS_ORIGIN_WHITELIST = [
-    'https://family-diary-frontend-.herokuapp.com/'
+    'https://family-diary-frontend-b34462049c80.herokuapp.com/'
 ]
 
 ROOT_URLCONF = "family_sns_api.urls"
